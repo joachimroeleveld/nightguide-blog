@@ -6,8 +6,6 @@ data:
   default.conf: |-
     server {
       listen 80;
-      listen [::]:80 default ipv6only=on;
-      server_name
 
       location = /health {
         return 200 'OK';
