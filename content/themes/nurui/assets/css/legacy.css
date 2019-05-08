@@ -1,0 +1,159 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+}
+
+body {
+    color: #fff;
+    background: url('../img/legacy/bg.jpg') center top no-repeat #000;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.page-header {
+    padding-top: 3em;
+}
+
+.container {
+    max-width: 60em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.content {
+    margin: 0 auto;
+    min-height: calc(100vh - 19em);
+}
+
+.page--home .content {
+    display: flex;
+    padding-top: 3em;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+main {
+    padding-bottom: 5em;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 1.6em;
+    color: #FFFFFF;
+    letter-spacing: -0.32px;
+    line-height: 27px;
+    margin-top: 2em;
+}
+
+h3, h4, h5 {
+    font-size: 1.3rem;
+}
+
+a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page--home main p {
+    font-size: 1.2em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.logo {
+    display: block;
+}
+
+.page--home .logo {
+    margin-top: 1em;
+}
+
+.buttons {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.iphone-container {
+    margin: 0 -1em;
+    text-align: center;
+    position: relative;
+}
+
+.iphone {
+    width: 100%;
+    height: auto;
+    background: url('../img/legacy/iphone.png') no-repeat center top;
+    max-width: 443px;
+    background-size: contain;
+}
+
+.button-appstore {
+    margin-right: 1em;
+}
+
+.button-appstore, .button-playstore {
+    margin-top: 1em;
+}
+
+.footer {
+    height: 19em;
+    background-image: linear-gradient(-180deg, #1F1F1F 40%, #161616 93%);
+    color: #BEBEBE;
+    padding-top: 2.5em;
+    position: relative;
+}
+
+.footer .info {
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.footer .links {
+    margin-top: 2em;
+}
+
+.footer .links a {
+    color: #6d6d6d;
+    padding-right: 1em;
+}
+
+@media screen and (min-width: 60em) {
+    .container {
+        margin: 0 auto;
+    }
+
+    .page--home .content {
+        flex-direction: row;
+        padding-top: 7em;
+    }
+
+    .page--home main {
+        width: 50%;
+        padding-right: 5em;
+    }
+
+    .page--home h1 {
+        padding-right: 3em;
+    }
+
+    .iphone-container {
+        width: 50%;
+    }
+
+    .iphone {
+        left: 0;
+        position: absolute;
+    }
+
+    .button-appstore, .button-playstore {
+        margin-top: 0em;
+    }
+}

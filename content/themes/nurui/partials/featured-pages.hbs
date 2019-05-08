@@ -1,0 +1,11 @@
+<div class="section-featured {{#if feature_image}}is-featured-image{{else}}no-featured-image wrap{{/if}}">
+	{{#if feature_image}}
+	<div class="featured-image" style="background-image: url({{feature_image}})"></div>
+	{{/if}}
+	<div class="featured-wrap flex">
+		<article class="featured-content">
+			<span class="featured-label global-tag">{{>icons/blog/star}} {{t "Featured"}}</span>
+			<h2><a href="{{url}}">{{title}}<span class="featured-dot"></span></a></h2>
+		</article>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="section-search flex" id="search">
+	<div class="search-close">{{>icons/blog/close}}</div>
+	{{#if @site.cover_image}}
+	<div class="search-image" style="background-image: url({{@site.cover_image}})">
+	</div>
+	{{/if}}
+	<div class="search-wrap">
+		<div class="search-content">
+			<form class="search-form flex" onsubmit="return false">
+				<input type="text" class="search-input" placeholder="{{t "Type your keywords"}}">
+			</form>
+			<div class="search-meta">
+				<span class="search-info-wrap">{{t "Please enter at least 3 characters"}}</span>
+				<span class="search-counter-wrap hide">
+					<span class="counter-results">0</span>
+				{{t "Results for your search"}}</span>
+			</div>
+			<div class="search-results">
+			</div>
+			<div class="search-suggestion flex">
+				{{>search-tags-cloud}}
+				{{>search-authors-cloud}}
+			</div>
+		</div>
+		<div class="search-footer">
+			<a href="{{@site.url}}">{{@site.title}}.</a>
+			{{#if @site.description}}
+			<span>{{@site.description}}.</span>
+			{{/if}}
+		</div>
+	</div>
+</div>
+<script>
+var searchPublished = '{{t "Published"}}',
+	searchFeaturedIcon = '{{>icons/blog/star}}',
+	searchHost = '{{@site.url}}',
+	searchKey = {{>search-api-key}},
+	searchAPI = searchHost+'/ghost/api/v2/content/posts/?key='+searchKey+'&limit=all&formats=plaintext&fields=url,title,plaintext,featured,published_at'
+</script>

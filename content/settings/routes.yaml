@@ -1,0 +1,10 @@
+routes:
+  /: home
+  /expert-chat/: expert-chat
+
+collections:
+  /cities/:
+    permalink: /cities/{slug}/
+    template: index
+
+taxonomies:

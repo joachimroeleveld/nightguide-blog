@@ -1,0 +1,15 @@
+<div {{#get "posts" filter="featured:true" as |slider-trigger|}}{{#if slider-trigger}}id="siema"{{/if}}{{/get}}{{#get "pages" filter="featured:true" as |slider-trigger|}}{{#if slider-trigger}}id="siema"{{/if}}{{/get}} class="section-scrollable">
+	{{#get "pages" filter="featured:true" order="published_at desc" as |slider-pages|}}
+	{{#foreach slider-pages}}
+	{{>featured-pages}}
+	{{/foreach}}
+	{{/get}}
+	{{#get "posts" filter="featured:true" include="authors" as |slider-posts|}}
+	{{#foreach slider-posts}}
+	{{>featured-posts}}
+	{{/foreach}}
+	{{/get}}
+</div>
+<div class="scrollable-nav">
+	<span class="next"></span>
+</div>

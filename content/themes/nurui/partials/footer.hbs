@@ -1,0 +1,27 @@
+<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			{{#if @site.logo}}
+			<a class="is-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
+			{{else}}
+			<a class="no-logo" href="{{@site.url}}">{{@site.title}}</a>
+			{{/if}}
+		</div>
+		<div class="footer-nav">
+			{{navigation}}
+		</div>
+		<div class="footer-social-links flex">
+			{{#if @site.facebook}}
+			<a href="{{facebook_url}}">{{>icons/social/facebook}}</a>
+			{{/if}}
+			{{#if @site.twitter}}
+			<a href="{{twitter_url}}">{{>icons/social/twitter}}</a>
+			{{/if}}
+			{{>social-icons}}
+		</div>
+	</div>
+	<div class="footer-copyright">
+		<span>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>.</span> {{t "All Right Reserved"}}.
+		{{{t "Published with {ghostlink}" ghostlink="<a href=\"https://ghost.org\">Ghost</a>"}}}.
+	</div>
+</footer>

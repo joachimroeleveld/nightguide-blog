@@ -1,0 +1,18 @@
+{
+    "name": "nurui",
+    "version": "1.6.2",
+    "engines": {
+        "ghost-api": "v2"
+    },
+    "author": {
+        "name": "fueko",
+        "email": "hello@fueko.net",
+        "url": "https://fueko.net"
+    },
+    "config": {
+        "posts_per_page": 8
+    },
+    "keywords": [
+        "ghost-theme"
+    ]
+}
