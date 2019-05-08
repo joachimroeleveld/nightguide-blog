@@ -28,16 +28,17 @@ spec:
               containerPort: 80
               protocol: TCP
           volumeMounts:
-            - mountPath: /etc/nginx/conf.d/default.conf
+            - mountPath: /etc/nginx/conf.d
               name: nginx-conf
-              subPath: default.conf
+              readOnly: false
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: http
+            initialDelaySeconds: 120
           readinessProbe:
             httpGet:
-              path: /health
+              path: /
               port: http
         - name: ghost
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -52,31 +53,6 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/ghost/content
               name: ghost-content
-          livenessProbe:
-            httpGet:
-              path: /
-              port: ghost
-              httpHeaders:
-              - name: Host
-                value: {{ .Values.ghost.host | quote }}
-              {{- if eq .Values.ghost.protocol "https" }}
-              - name: X-Forwarded-Proto
-                value: https
-              {{- end }}
-            initialDelaySeconds: 120
-            timeoutSeconds: 5
-            failureThreshold: 6
-          readinessProbe:
-            httpGet:
-              path: /
-              port: ghost
-              httpHeaders:
-              - name: Host
-                value: {{ .Values.ghost.host | quote }}
-              {{- if eq .Values.ghost.protocol "https" }}
-              - name: X-Forwarded-Proto
-                value: https
-              {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
