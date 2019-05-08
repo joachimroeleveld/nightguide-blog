@@ -28,9 +28,9 @@ spec:
               containerPort: 80
               protocol: TCP
           volumeMounts:
-            - mountPath: /etc/nginx/conf.d/ghost.template
+            - mountPath: /etc/nginx/conf.d/ghost.conf
               name: nginx-conf
-              subPath: ghost.template
+              subPath: ghost.conf
           livenessProbe:
             httpGet:
               path: /health

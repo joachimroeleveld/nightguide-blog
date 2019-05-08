@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: ghost-nginx-config
 data:
-  ghost.template: |-
+  ghost.conf: |-
     server {
       listen 80;
       listen [::]:80 default ipv6only=on;
