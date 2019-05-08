@@ -20,11 +20,30 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: nginx
+          image: nginx:1.16
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/ghost.template
+              name: nginx-conf
+              subPath: ghost.template
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+        - name: ghost
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
+            - name: ghost
               containerPort: 2368
               protocol: TCP
           env:
@@ -36,7 +55,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: ghost
               httpHeaders:
               - name: Host
                 value: {{ .Values.ghost.host | quote }}
@@ -50,7 +69,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: ghost
               httpHeaders:
               - name: Host
                 value: {{ .Values.ghost.host | quote }}
@@ -64,6 +83,9 @@ spec:
         - name: ghost-content
           persistentVolumeClaim:
             claimName: ghost-content
+        - name: nginx-conf
+          configMap:
+            name: ghost-nginx-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
