@@ -22,3 +22,8 @@ npm-debug.log
 /versions
 .ghost*
 config.*
+/content
+!/content/settings
+!/content/themes
+
+

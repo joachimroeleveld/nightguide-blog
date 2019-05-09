@@ -5,8 +5,9 @@
 replicaCount: 1
 
 ghost:
-  host: localhost
-  protocol: http
+  host: nightguide.app
+  protocol: https
+  config: {}
 
 image:
   repository: ghost
@@ -21,7 +22,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     kubernetes.io/ingress.global-static-ip-name: website
     ingress.gcp.kubernetes.io/pre-shared-cert: website
