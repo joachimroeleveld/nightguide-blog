@@ -51,8 +51,8 @@ spec:
             - name: url
               value: {{ .Values.ghost.protocol }}://{{ .Values.ghost.host }}
             {{- range $key, $value := .Values.ghost.config }}
-            - name: $key
-              value: $value
+            - name: {{ $key }}
+              value: {{ $value }}
             {{- end }}
           volumeMounts:
             - mountPath: /var/lib/ghost/content
