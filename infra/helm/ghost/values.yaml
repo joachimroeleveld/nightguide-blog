@@ -7,7 +7,7 @@ replicaCount: 1
 ghost:
   host: nightguide.app
   protocol: https
-  config: {}
+  secretName:
 
 image:
   repository: ghost

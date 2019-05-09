@@ -50,10 +50,9 @@ spec:
           env:
             - name: url
               value: {{ .Values.ghost.protocol }}://{{ .Values.ghost.host }}
-            {{- range $key, $value := .Values.ghost.config }}
-            - name: {{ $key }}
-              value: {{ $value }}
-            {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.ghost.secretName }}
           volumeMounts:
             - mountPath: /var/lib/ghost/content
               name: ghost-content
