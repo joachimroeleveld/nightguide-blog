@@ -52,7 +52,7 @@ spec:
               value: {{ .Values.ghost.protocol }}://{{ .Values.ghost.host }}
           envFrom:
             - secretRef:
-                name: {{ .Values.ghost.secretName }}
+                name: ghost-secrets
           volumeMounts:
             - mountPath: /var/lib/ghost/content
               name: ghost-content
