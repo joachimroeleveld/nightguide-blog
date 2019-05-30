@@ -3,8 +3,9 @@ routes:
   /expert-chat/: expert-chat
 
 collections:
-  /cities/:
-    permalink: /cities/{slug}/
-    template: index
+  /nl/utrecht/:
+    permalink: /nl/utrecht/{slug}/
+    filter: primary_tag:utrecht
 
 taxonomies:
+  tag: /tag/{slug}/

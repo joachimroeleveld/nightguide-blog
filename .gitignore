@@ -25,5 +25,6 @@ config.*
 /content
 !/content/settings
 !/content/themes
-
+!/content/adapters
+volumes
 

@@ -1,5 +1,21 @@
 steps:
 
+# Build Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', '${_IMAGE_REPO}/blog', '.' ]
+
+  # Tag image with git tag
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'tag', '${_IMAGE_REPO}/blog', '${_IMAGE_REPO}/blog:$TAG_NAME']
+
+  # Push image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', '${_IMAGE_REPO}/blog' ]
+
+  # Push image tag
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', '${_IMAGE_REPO}/blog:$TAG_NAME' ]
+
   # Push chart to Helm repository
 - name: 'gcr.io/rimusz-lab1/cloud-builders-helm'
   entrypoint: bash
@@ -8,3 +24,7 @@ steps:
     - 'REPO=gs://${_BUILDS_BUCKET}/charts/${_ENV}'
     - 'VERSION=${TAG_NAME}'
     - 'CHART_NAME=ghost'
+
+images:
+  - ${_IMAGE_REPO}/blog
+  - ${_IMAGE_REPO}/blog:$TAG_NAME
