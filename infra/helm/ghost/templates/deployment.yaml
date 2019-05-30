@@ -53,15 +53,9 @@ spec:
           envFrom:
             - secretRef:
                 name: ghost-secrets
-          volumeMounts:
-            - mountPath: /var/lib/ghost/content
-              name: ghost-content
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: ghost-content
-          persistentVolumeClaim:
-            claimName: ghost-content
         - name: nginx-conf
           configMap:
             name: ghost-nginx-config

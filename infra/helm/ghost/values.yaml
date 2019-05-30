@@ -2,6 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+mariadb:
+  nameOverride: blog-db
+  fullnameOverride: blog-db
+  db:
+    name: blog
+    user: ghost
+    password: pass
+
 replicaCount: 1
 
 ghost:
