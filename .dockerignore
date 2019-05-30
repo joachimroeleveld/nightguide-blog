@@ -1,3 +1,8 @@
 /content/data
 /content/images
 /content/logs
+node_modules
+.idea
+/current
+/versions
+/volumes
