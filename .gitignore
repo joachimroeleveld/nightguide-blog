@@ -23,8 +23,13 @@ npm-debug.log
 .ghost*
 config.*
 /content
+/themes
+/settings
+/data
+/images
 !/content/settings
 !/content/themes
+!/content/apps
 !/content/adapters
 volumes
 

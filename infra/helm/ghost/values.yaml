@@ -9,8 +9,8 @@ ghost:
   protocol: https
 
 image:
-  repository: ghost
-  tag: 2.22-alpine
+  repository: gcr.io/nightguide-infra
+  tag: 1.0.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
