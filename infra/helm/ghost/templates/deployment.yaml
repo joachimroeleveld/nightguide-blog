@@ -50,15 +50,25 @@ spec:
           env:
             - name: url
               value: {{ .Values.ghost.protocol }}://{{ .Values.ghost.host }}
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/usr/src/app/google-key.json"
           envFrom:
             - secretRef:
-                name: ghost-secrets
+                name: blog-secrets
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: "/usr/src/app/google-key.json"
+              name: serviceaccount
+              readOnly: true
+              subPath: google-key.json
       volumes:
         - name: nginx-conf
           configMap:
             name: ghost-nginx-config
+        - name: serviceaccount
+          secret:
+            secretName: "blog-serviceaccount"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

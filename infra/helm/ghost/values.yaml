@@ -9,6 +9,8 @@ mariadb:
     name: blog
     user: ghost
     password: pass
+  replication:
+    enabled: false
 
 replicaCount: 1
 
