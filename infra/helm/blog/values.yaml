@@ -7,14 +7,14 @@ mariadb:
   fullnameOverride: blog-db
   db:
     name: blog
-    user: blog
+    user: ghost
     password: pass
   replication:
     enabled: false
 
 replicaCount: 1
 
-blog:
+ghost:
   host: nightguide.app
   protocol: https
 
