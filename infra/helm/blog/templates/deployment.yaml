@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ghost.fullname" . }}
+  name: {{ include "blog.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "ghost.name" . }}
-    helm.sh/chart: {{ include "ghost.chart" . }}
+    app.kubernetes.io/name: {{ include "blog.name" . }}
+    helm.sh/chart: {{ include "blog.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "ghost.name" . }}
+      app.kubernetes.io/name: {{ include "blog.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "ghost.name" . }}
+        app.kubernetes.io/name: {{ include "blog.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
@@ -40,16 +40,16 @@ spec:
             httpGet:
               path: /
               port: http
-        - name: ghost
+        - name: blog
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: ghost
+            - name: blog
               containerPort: 2368
               protocol: TCP
           env:
             - name: url
-              value: {{ .Values.ghost.protocol }}://{{ .Values.ghost.host }}
+              value: {{ .Values.blog.protocol }}://{{ .Values.blog.host }}
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: "/usr/src/app/google-key.json"
           envFrom:
@@ -65,7 +65,7 @@ spec:
       volumes:
         - name: nginx-conf
           configMap:
-            name: ghost-nginx-config
+            name: blog-nginx-config
         - name: serviceaccount
           secret:
             secretName: "blog-serviceaccount"

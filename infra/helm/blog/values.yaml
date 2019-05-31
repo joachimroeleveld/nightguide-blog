@@ -1,4 +1,4 @@
-# Default values for ghost.
+# Default values for blog.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -7,14 +7,14 @@ mariadb:
   fullnameOverride: blog-db
   db:
     name: blog
-    user: ghost
+    user: blog
     password: pass
   replication:
     enabled: false
 
 replicaCount: 1
 
-ghost:
+blog:
   host: nightguide.app
   protocol: https
 
