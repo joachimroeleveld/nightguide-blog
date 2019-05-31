@@ -25,10 +25,10 @@ config.*
 /settings
 /data
 /images
-/content
-!/content/settings
-!/content/themes
-!/content/apps
-!/content/adapters
-volumes
+/content/*
+!/content/settings/
+!/content/themes/
+!/content/apps/
+!/content/adapters/
+/volumes
 
