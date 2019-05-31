@@ -23,7 +23,7 @@ steps:
   env:
     - 'REPO=gs://${_BUILDS_BUCKET}/charts/${_ENV}'
     - 'VERSION=${TAG_NAME}'
-    - 'CHART_NAME=ghost'
+    - 'CHART_NAME=blog'
 
 images:
   - ${_IMAGE_REPO}/blog
